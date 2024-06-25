@@ -1,15 +1,10 @@
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h1 className="text-2xl font-bold mb-4 text-gray-700">Welcome to Your React App</h1>
-        <p className="text-gray-500 mb-4">
-          This is a simple, clean, and beautiful design using TailwindCSS.
-        </p>
-        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-          Get Started
-        </button>
-      </div>
+    <div className="min-h-screen flex flex-col m-4">
+     <div>
+            <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Search video</label>
+            <input type="text" id="first_name" className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search someone video" required />
+        </div>
     </div>
   )
 }

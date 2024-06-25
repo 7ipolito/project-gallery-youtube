@@ -13,7 +13,7 @@
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "dotenv/config"],
     "exclude": ["node_modules"]
   }
   

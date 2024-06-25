@@ -7,17 +7,20 @@ export class VideoService {
     @inject('PrismaClient') private prisma: PrismaClient
   ) {}
 
-  async getVideosByPlaylistId(playlistId:string): Promise<Video[]> {
+  async getVideosByPlaylistId(playlistId:string): Promise<any> {
     // return this.prisma.video.findMany();
-    await this.createPlaylist(playlistId);
    
-    await this.createVideos(playlistId);
-    return []
+   
+    
+    return await this.createPlaylist(playlistId);
   }
   
 
-  async createPlaylist(playlistId: string){
-    // `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.GOOGLE_KEY}&part=snippet&playlistId=${playlistId}&maxResults=${process.env.MAX_RESULTS}`
+  async createPlaylist(playlistId: string):Promise<any>{
+    const isPlaylist = await this.verifyExistingPlaylist(playlistId);
+    if(!isPlaylist){
+      console.log("creating playlist in database")
+
     axios.get(`https://www.googleapis.com/youtube/v3/playlists?key=${process.env.GOOGLE_KEY}&part=snippet&id=${playlistId}&maxResults=${process.env.MAX_RESULTS}`)
     .then(r => {
       const response=r.data.items[0].snippet;
@@ -28,11 +31,14 @@ export class VideoService {
         publishedAt:response.publishedAt
       }
 
-  this.prisma.playlist.create({
+   this.prisma.playlist.create({
         data:{
           ..._playlist,
         }
-      }).catch(error=>{
+      }).then(r=>{
+        this.createVideos(playlistId)
+      })
+      .catch(error=>{
         throw new Error(error)
       })
 
@@ -41,9 +47,17 @@ export class VideoService {
     .catch(error => {
       throw new Error(error)
     });
+     
+    }else{
+      console.log("getting data existing")
+      return this.prisma.video.findMany({where:{
+        playlistId:playlistId
+      }})
+    }
     }
 
     async createVideos(playlistId: string){
+      console.log("getting videos and placing in database")
       axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.GOOGLE_KEY}&part=snippet&playlistId=${playlistId}&maxResults=${process.env.MAX_RESULTS}`)
       .then(r => {
         for (let index = 0; index < r.data.pageInfo.totalResults; index++) {
@@ -79,5 +93,13 @@ export class VideoService {
       });
      
 
+      }
+
+      async verifyExistingPlaylist(playlistId: string):Promise<boolean>{
+       
+        const response = await this.prisma.playlist.findUnique({where:{
+          playlistId:playlistId
+        }})
+        return response==null?false:true;
       }
 }

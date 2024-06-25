@@ -1,11 +1,13 @@
 {
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@eslint/js": "^9.5.0",
+    "concurrently": "^8.2.2",
+    "globals": "^15.6.0",
+    "typescript-eslint": "^7.14.1"
   },
   "scripts": {
     "start-frontend": "cd frontend && pnpm start",
     "start-backend": "cd backend && pnpm start",
     "start": "concurrently \"pnpm run start-frontend\" \"pnpm run start-backend\""
- }
- 
+  }
 }

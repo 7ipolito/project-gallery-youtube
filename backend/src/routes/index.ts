@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import { getAllVideos } from "../controllers/videoController"
+import { getVideosByPlaylistId } from "../controllers/videoController"
 
 const router = express.Router();
 
-router.get('/videos', getAllVideos)
+router.get('/videos/findbyPlaylistId', getVideosByPlaylistId)
+// router.get('/videos/relatedVideos', generateRelatedVideos)
 
 export default router;

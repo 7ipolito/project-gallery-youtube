@@ -12,7 +12,7 @@ const NavBar= () => {
         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden lg:block">Gallery Youtube</span>
     </a>
     <div className='w-9/12'>
-      <Input label={"PlaylistId"} placeholder={"Search by playlistId"} isMobile/>
+      <Input label={"PlaylistId"} placeholder={"Search by playlistId"}/>
     </div>
   </div>
 </nav>

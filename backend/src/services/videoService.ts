@@ -8,11 +8,11 @@ export class VideoService {
   ) {}
 
   async getVideosByPlaylistId(playlistId:string): Promise<any> {
-    // return this.prisma.video.findMany();
-   
-   
-    
     return await this.createPlaylist(playlistId);
+  }
+
+  async generateRelatedVideos(id:number): Promise<any> {
+    return await this.getRelationedVideo(id)
   }
   
 
@@ -85,13 +85,10 @@ export class VideoService {
         })
   
         }
-        
-  
       })
       .catch(error => {
         throw new Error(error)
       });
-     
 
       }
 
@@ -101,5 +98,23 @@ export class VideoService {
           playlistId:playlistId
         }})
         return response==null?false:true;
+      }
+
+      async getRelationedVideo(id:number){
+        const allVideos =  this.prisma.video.findMany({
+          where: {
+            id: {
+              not: id,
+            },
+          },
+        }).catch(e => {
+          console.error(e);
+          process.exit(1);
+        })
+        .finally(async () => {
+          await this.prisma.$disconnect();
+        });
+
+        return allVideos;
       }
 }

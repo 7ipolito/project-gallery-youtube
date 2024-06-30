@@ -31,7 +31,7 @@ function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
 
       <div className="grid grid-cols-3 gap-4">
         {children}
-        {/* <YoutubeItem/> */}
+        {/* <ThumbnailItem/> */}
       </div>
     </div>
   );

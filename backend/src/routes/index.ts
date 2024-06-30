@@ -1,7 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import {
-    generateRelatedVideos,
+    getAllVideos,
+    getVideosByTitle,
     getVideosByPlaylistId,
 } from '../controllers/videoController'
 
@@ -9,6 +10,8 @@ const router = express.Router()
 
 router.post('/videos/findbyPlaylistId', getVideosByPlaylistId)
 
-router.get('/videos/relatedVideos', generateRelatedVideos)
+router.post('/videos/findbyTitle', getVideosByTitle)
+
+router.get('/videos/findAllVideos', getAllVideos)
 
 export default router

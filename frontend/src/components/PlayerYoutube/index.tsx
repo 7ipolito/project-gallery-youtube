@@ -3,11 +3,12 @@ import YouTube, { YouTubeProps } from 'react-youtube';
 import YoutubeItem from '../YoutubeItem';
 import { Video } from '../../interfaces/Video';
 
-interface PlayerYoutubeProps extends Video {
+interface PlayerYoutubeProps {
+  video: Video;
   children: ReactNode;
 }
 
-function PlayerYoutube({ description, videoId, title, children }: PlayerYoutubeProps) {
+function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
   const opts: YouTubeProps['opts'] = {
     height: '480',
     width: window.innerWidth < 720 ? window.innerWidth : 1250,
@@ -19,12 +20,12 @@ function PlayerYoutube({ description, videoId, title, children }: PlayerYoutubeP
 
   return (
     <div className="items-center justify-center">
-      <YouTube videoId={videoId} opts={opts} />
+      <YouTube videoId={video.videoId} opts={opts} />
       <div className="w-full justify-between p-2 max-w-[1250px]">
-        <p className="text-2xl font-bold">{title}</p>
+        <p className="text-2xl font-bold">{video.title}</p>
 
         <p>Description</p>
-        <p>{description}</p>
+        <p>{video.description}</p>
       </div>
 
       <h2 className="text-2xl font-bold mb-2">Related Videos</h2>

@@ -4,13 +4,17 @@ FROM node:20
 # Cria o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-RUN cd backend
+# Copia o package.json para o diretório de trabalho
+COPY backend/package.json ./backend/package.json
 
-COPY package.json ./
+# Define o diretório de trabalho para o backend
+WORKDIR /app/backend
+
 # Instala as dependências
 RUN npm install
 
-COPY . .
+# Copia o restante dos arquivos da aplicação
+COPY backend .
 
 # Gera os artefatos do Prisma
 RUN npx prisma generate

@@ -1,10 +1,13 @@
 import express from 'express'
 import cors from 'cors'
-import { generateRelatedVideos, getVideosByPlaylistId } from '../controllers/videoController'
+import {
+    generateRelatedVideos,
+    getVideosByPlaylistId,
+} from '../controllers/videoController'
 
 const router = express.Router()
 
-router.get('/videos/findbyPlaylistId', getVideosByPlaylistId)
+router.post('/videos/findbyPlaylistId', getVideosByPlaylistId)
 
 router.get('/videos/relatedVideos', generateRelatedVideos)
 

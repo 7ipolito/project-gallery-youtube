@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Input from '../Input';
+import { InputProps } from '../../interfaces/Input';
 
 // import { Container } from './styles';
+interface NavBarProps {
+  children: ReactNode;
+}
 
-const NavBar = () => {
+const NavBar = ({ children }: NavBarProps) => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 items-center">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -17,9 +21,7 @@ const NavBar = () => {
             Gallery Youtube
           </span>
         </a>
-        <div className="w-9/12">
-          <Input label={'PlaylistId'} placeholder={'Search by playlistId'} />
-        </div>
+        <div className="w-9/12">{children}</div>
       </div>
     </nav>
   );

@@ -3,7 +3,7 @@ import { Video } from '../../interfaces/Video';
 
 interface YoutubeItemProps {
   video: Video;
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-explicit-any
   onPress: (videoSelected: Video) => any;
 }
 

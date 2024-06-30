@@ -2,9 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import PlayerYoutube from '../components/PlayerYoutube';
 import { api } from '../api/axios';
-import { AxiosRequestConfig } from 'axios';
 import { Video } from '../interfaces/Video';
-import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Input from '../components/Input';
 import YoutubeItem from '../components/YoutubeItem';
@@ -58,16 +57,12 @@ function Dashboard() {
       </NavBar>
       <div className="flex items-center justify-center">{/* <PlaylistItem /> */}</div>
       <div className="w-full flex items-center justify-center">
-        {videos ? (
+        {videos && (
           <PlayerYoutube video={videoSelected!}>
             {videos
               ?.filter((video) => video.videoId != videoSelected!.videoId)!
               .map((video) => <YoutubeItem key={video.videoId} onPress={(e) => setVideoSelected(e)} video={video!} />)}
           </PlayerYoutube>
-        ) : (
-          <div className="flex-1 flex items-center justify-center">
-            <p className="text-2xl">Welcome to gallery youtube, search something</p>
-          </div>
         )}
       </div>
     </div>

@@ -11,7 +11,7 @@ COPY backend/package.json ./backend/package.json
 WORKDIR /app/backend
 
 # Instala as dependências
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copia o restante dos arquivos da aplicação
 COPY backend .

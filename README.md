@@ -1,6 +1,9 @@
-# My Full-Stack Template
+# Project Gallery Youtube
+<img loading="lazy" src="https://avatars.githubusercontent.com/u/128262168?s=200&v=4" width="200px"/>
 
-Welcome to the repository for my full-stack template, integrating a React front-end with a Node.js and Express back-end. This README provides a detailed explanation of the application, its components, and how to get started.
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/Abo1zu?referralCode=alphasec)
+
+Welcome to project-gallery-youtube repository 🎥
 
 ## Table of Contents
 
@@ -14,7 +17,7 @@ Welcome to the repository for my full-stack template, integrating a React front-
 
 ## Introduction
 
-This application was conceived as a blueprint for rapid full-stack development, offering the seamless integration of a dynamic React front-end and a robust, scalable Node.js back-end. This amalgamation of technologies ensures that developers can focus on building features without the usual setup overhead.
+This application was created by me, Allan Hipólito. It allows users to explore and watch YouTube videos in an intuitive and dynamic way. Utilizing Node.js, Prisma, and deployed on Railway, the gallery features a sleek and responsive interface, seamlessly integrating high-quality and diverse content from YouTube.
 
 ## Technologies Used
 
@@ -24,17 +27,16 @@ This application was conceived as a blueprint for rapid full-stack development, 
 - **React**: A JavaScript library for building user interfaces. It allows us to create reusable UI components.
 - **TypeScript**: A superset of JavaScript, offering static type-checking and the latest ECMAScript features.
 - **TailwindCSS**: A utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center` and more to style your websites without leaving your HTML.
-- **React-Router-Dom**: A routing library for React, enabling navigation among views.
 - **Jest**: A delightful JavaScript Testing Framework with a focus on simplicity.
 
 ### Backend
 
 - **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine.
+- **PrismaORM**: Prisma ORM is an open-source next-generation ORM.
 - **Express**: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 - **TypeScript**: Brings static typing to JavaScript, ensuring a more predictable runtime behavior.
 - **Jest**: Used for writing unit and integration tests for the backend.
 - **PostgreSQL**: A powerful, open-source object-relational database system.
-- **Nodemon**: A utility that monitors for any changes in your source and automatically restarts your server.
 
 ## Installation
 
@@ -43,13 +45,13 @@ Before you start, ensure you have `node` and `npm` installed on your machine.
 1. **Clone the repository**:
    
    ```bash
-   git clone https://github.com/gabrielkrapp/full-stack-template.git
+   git clone https://github.com/7ipolito/project-gallery-youtube.git
    ```
 
 2. **Navigate to the repository**:
 
    ```bash
-   cd full-stack-template
+   cd project-gallery-youtube
    ```
 
 3. **Install the dependencies**:
@@ -96,10 +98,6 @@ Ensure that the frontend and backend are configured to run on separate ports to 
 
 ## Conclusion
 
-This full-stack application setup is intended to accelerate the development process by providing a cohesive blend of some of the best technologies in web development today. Whether you're looking to create a small prototype or build a large-scale application, this repository provides a solid foundation. Happy coding!
+This application, created by me, Allan Hipólito, allows users to explore and watch YouTube videos dynamically. It features a sleek interface where users can seamlessly navigate related videos from their initial selection. The project is currently 80% complete, with ongoing enhancements to enrich the user experience.
 
 ---
-
-If you find any bugs or have a feature request, please open an issue on [GitHub](https://github.com/gabrielkrapp/full-stack-template/issues).
-
-**Made with ❤️ by [Gabriel Krapp](https://github.com/gabrielkrapp)**.

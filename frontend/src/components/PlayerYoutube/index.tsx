@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
-import YoutubeItem from '../YoutubeItem';
 import { Video } from '../../interfaces/Video';
 
 interface PlayerYoutubeProps {

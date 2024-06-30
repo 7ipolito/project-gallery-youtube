@@ -10,8 +10,6 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 
-const PORT = 3000
-
 app.use(cors())
 app.use('/api', routes)
 app.use(
@@ -30,6 +28,6 @@ app.use(
     }
 )
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on http://localhost:${process.env.PORT}`)
 })

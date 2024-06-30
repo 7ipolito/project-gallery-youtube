@@ -11,8 +11,24 @@ export class VideoService {
         return await this.createPlaylist(playlistId)
     }
 
-    async generateRelatedVideos(id: number): Promise<any> {
-        return await this.getRelationedVideo(id)
+    async getVideoByTitle(title: string): Promise<any> {
+        return await this.getVideos(title)
+    }
+
+    async getAllVideos(): Promise<Video[]> {
+        return await this.getVideos()
+    }
+
+    async getVideos(title?: string): Promise<Video[]> {
+        if (title) {
+            return await this.prisma.video.findMany({
+                where: {
+                    title: { contains: title },
+                },
+            })
+        } else {
+            return await this.prisma.video.findMany()
+        }
     }
 
     async createPlaylist(playlistId: string): Promise<any> {
@@ -121,25 +137,5 @@ export class VideoService {
         } catch (error) {
             throw new AppError(ErroDefaut)
         }
-    }
-
-    async getRelationedVideo(id: number) {
-        const allVideos = this.prisma.video
-            .findMany({
-                where: {
-                    id: {
-                        not: id,
-                    },
-                },
-            })
-            .catch((e) => {
-                console.error(e)
-                process.exit(1)
-            })
-            .finally(async () => {
-                await this.prisma.$disconnect()
-            })
-
-        return allVideos
     }
 }

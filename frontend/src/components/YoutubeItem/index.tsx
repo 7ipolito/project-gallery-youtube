@@ -2,6 +2,7 @@ import React from 'react';
 import { Video } from '../../interfaces/Video';
 import { format } from 'date-fns';
 import { IoEyeSharp } from 'react-icons/io5';
+import { isMobile } from '../../utils/isMobile';
 
 interface YoutubeItemProps {
   video: Video;
@@ -16,7 +17,7 @@ const YoutubeItem = ({ onPress, video }: YoutubeItemProps) => {
       {video.thumbnails.high && (
         <div className=" flex ">
           <div className="flex flex-row items-center">
-            <img src={video.thumbnails.high.url} width={410} alt="Video related" className="pr-4 pb-4" />
+            <img src={video.thumbnails.high.url} width={isMobile()? 120:410} alt="Video related" className="pr-4 pb-4" />
             <div className="flex flex-col">
               <p className="text-xl block">{video.title}</p>
               <p className="text-xl block">Published At: {format(video.publishedAt, 'MM/dd/yyyy')}</p>

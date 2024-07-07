@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import { Video } from '../../interfaces/Video';
+import { isMobile } from '../../utils/isMobile';
 
 interface PlayerYoutubeProps {
   video: Video;
@@ -10,7 +11,7 @@ interface PlayerYoutubeProps {
 function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
   const opts: YouTubeProps['opts'] = {
     height: '480',
-    width: window.innerWidth < 720 ? window.innerWidth : 1250,
+    width: isMobile() ? window.innerWidth : 1250,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,

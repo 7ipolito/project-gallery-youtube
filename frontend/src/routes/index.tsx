@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Video } from "../interfaces/Video";
 import { api } from "../api/axios";
 import toast, { Toaster } from 'react-hot-toast';
+import NotFound from "../pages/NotFound";
  function App(){
   const navigate = useNavigate();
 
@@ -103,7 +104,7 @@ import toast, { Toaster } from 'react-hot-toast';
     <Routes>
       <Route path="/" element={<Dashboard videos={allVideosDatabase}/>}/>
       <Route path="/watch" element={<Playlist/>}/>
-      {/* <Route path="*" element={<NotFound/>}/> */}
+      <Route path="*" element={<NotFound/>}/>
 
     </Routes>
   </>

@@ -1,5 +1,5 @@
 # Project Gallery Youtube
-<img loading="lazy" src="https://github.com/7ipolito/project-gallery-youtube/assets/45522944/7dfc7a5b-541d-42e1-84ee-8b60eeff5527" width="200px"/>
+<img src="https://github.com/7ipolito/project-gallery-youtube/assets/45522944/169306e7-02be-4681-9ae4-b4a9eedcb0ee" width="200px"/>
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/Abo1zu?referralCode=alphasec)
 
@@ -14,7 +14,7 @@ Welcome to project-gallery-youtube repository 🎥
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
 - [Conclusion](#conclusion)
-
+  
 ## Introduction
 
 This application was created by me, Allan Hipólito. It allows users to explore and watch YouTube videos in an intuitive and dynamic way. Utilizing Node.js, Prisma, and deployed on Railway, the gallery features a sleek and responsive interface, seamlessly integrating high-quality and diverse content from YouTube.

@@ -1,5 +1,5 @@
 # Project Gallery Youtube
-<img loading="lazy" src="https://avatars.githubusercontent.com/u/128262168?s=200&v=4" width="200px"/>
+<img loading="lazy" src="https://github.com/7ipolito/project-gallery-youtube/assets/45522944/7dfc7a5b-541d-42e1-84ee-8b60eeff5527" width="200px"/>
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/Abo1zu?referralCode=alphasec)
 

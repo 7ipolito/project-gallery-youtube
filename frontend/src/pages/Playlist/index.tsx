@@ -2,12 +2,13 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { useParams } from 'react-router';
-import 'react-toastify/dist/ReactToastify.css';
 import PlayerYoutube from '../../components/PlayerYoutube';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Video } from '../../interfaces/Video';
 import ThumbnailItem from '../../components/ThumbnailItem';
 import { api } from '../../api/axios';
+import toast, { Toaster } from 'react-hot-toast';
+import { toastConfig } from '../../utils/toastConfig';
 
 
 function Playlist() {
@@ -22,8 +23,11 @@ function Playlist() {
 const fetchVideosByPlaylistId = useCallback(async()=>{
     try {
       if(location.state==null)  {
+       
         const params = new URLSearchParams(location.search);
         const playlistId = params.get("playlistId");
+        toast('Waiting..', toastConfig);
+
         const response = await api.post('/videos/findbyPlaylistId', { playlistId: playlistId });
         if (response.data[0].videoId) {
           setVideos(response.data)
@@ -39,16 +43,17 @@ const fetchVideosByPlaylistId = useCallback(async()=>{
       console.log(error)
     }
    
-},[location.search, location.state])
+},[])
 
 useEffect(()=>{
+
   fetchVideosByPlaylistId()
 
   console.log(location)
 
   // console.log(location.state.videoSelected)
   
-},[fetchVideosByPlaylistId, location])
+},[])
   return (
    <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
         <div className="w-full flex items-center justify-center">

@@ -1,14 +1,13 @@
-import { Routes, Route, BrowserRouter, useNavigate } from "react-router-dom";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Playlist from "../pages/Playlist";
-import NotFound from "../pages/NotFound";
 import NavBar from "../components/NavBar";
 import Input from "../components/Input";
 import { useCallback, useEffect, useState } from "react";
 import { Video } from "../interfaces/Video";
-import { toast } from "react-toastify";
 import { api } from "../api/axios";
-
+import toast, { Toaster } from 'react-hot-toast';
  function App(){
   const navigate = useNavigate();
 
@@ -23,18 +22,12 @@ import { api } from "../api/axios";
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
        
-       const currentPath = location.pathname;
-       if(currentPath=="/watch"){
-        navigate('/');
-        
-       }
-
        getVideos()
-      // setVideos(null);
-      // setVideoSelected(null);
+      
     }
   };
   const getInitialVideos = useCallback(async () => {
+   
     try {
       const response = await api.get('/videos/findAllVideos');
       if (response.data[0].videoId) {
@@ -42,16 +35,8 @@ import { api } from "../api/axios";
       }
     } catch (error) {
       console.log();
-      toast.error('Something went wrong', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.error('Something were wrong');
+
     }
   }, []);
 
@@ -67,8 +52,10 @@ import { api } from "../api/axios";
       console.log(searchValue.trim());
       if (searchValue.trim() || search ) {
         try {
-          const response = await api.post('/videos/findbyPlaylistId', { playlistId: searchValue || search });
+          // toast('Waiting..', toastConfig);
 
+          const response = await api.post('/videos/findbyPlaylistId', { playlistId: searchValue || search });
+         
           if (response.data[0].videoId) {
               navigate(`/watch?playlistId=${searchValue}`);
               // setVideos(response.data);
@@ -83,21 +70,12 @@ import { api } from "../api/axios";
               video.title.toLowerCase().includes(searchValue.toLowerCase()),
             );
             if (filteredVideos![0].videoId) {
-              setAllVideosDatabase(filteredVideos);
+              setAllVideosDatabase(?filteredVideos);
             } else {
               throw new Error();
             }
           } catch (error) {
-            toast.error('Something went wrong', {
-              position: 'top-right',
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: 'light',
-            });
+            toast.error('Something were wrong');
           }
         }
       } else {
@@ -109,9 +87,10 @@ import { api } from "../api/axios";
   );
   return(
     <>
-  
+        <Toaster />
 
     <NavBar>
+
       <Input
         onChange={handleChange}
         onKeyDown={handleKeyDown}
@@ -119,6 +98,7 @@ import { api } from "../api/axios";
         label={'PlaylistId'}
         placeholder={'Search by playlistId or from videos in database  '}
       />
+     
     </NavBar>
     <Routes>
       <Route path="/" element={<Dashboard videos={allVideosDatabase}/>}/>

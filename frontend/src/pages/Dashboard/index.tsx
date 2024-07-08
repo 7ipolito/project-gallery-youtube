@@ -1,14 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { api } from '../../api/axios';
-import Input from '../../components/Input';
-import NavBar from '../../components/NavBar';
-import PlayerYoutube from '../../components/PlayerYoutube';
-import ThumbnailItem from '../../components/ThumbnailItem';
 import YoutubeItem from '../../components/YoutubeItem';
 import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
+import toast, { Toaster } from 'react-hot-toast';
+import { toastConfig } from '../../utils/toastConfig';
 
 interface DashboardProps{
   videos:Video[] | null
@@ -22,6 +18,7 @@ function Dashboard({videos}: DashboardProps) {
     async (video: Video, playlistId:string) => {
       console.log(video);
         try {
+          toast('Waiting..',toastConfig);
           const response = await api.post('/videos/findbyPlaylistId', { playlistId: playlistId });
 
           if (response.data[0].videoId) {
@@ -46,8 +43,8 @@ function Dashboard({videos}: DashboardProps) {
 
   return (
     <div>
-      <ToastContainer />
-
+    
+{/* <Toaster/> */}
      
       <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
         <div className="w-full flex items-center justify-center">
@@ -70,6 +67,7 @@ function Dashboard({videos}: DashboardProps) {
         
         </div>
       </div>
+      
     </div>
   );
 }

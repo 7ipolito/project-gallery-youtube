@@ -12,7 +12,7 @@ const NavBar = ({ children }: NavBarProps) => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 items-center">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link to="/"><a className="flex items-center space-x-3 rtl:space-x-reverse ">
+        <Link to="/"><div className="flex items-center space-x-3 rtl:space-x-reverse ">
           <img
             src="/src/assets/logo.png"
             className="h-12 "
@@ -21,7 +21,7 @@ const NavBar = ({ children }: NavBarProps) => {
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden lg:block">
             Gallery Youtube
           </span>
-        </a>
+        </div>
         </Link>
         <div className="w-9/12">{children}</div>
       </div>

@@ -70,7 +70,7 @@ import toast, { Toaster } from 'react-hot-toast';
               video.title.toLowerCase().includes(searchValue.toLowerCase()),
             );
             if (filteredVideos![0].videoId) {
-              setAllVideosDatabase(?filteredVideos);
+              setAllVideosDatabase(filteredVideos);
             } else {
               throw new Error();
             }

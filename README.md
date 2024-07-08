@@ -27,7 +27,9 @@ This application was created by me, Allan Hipólito. It allows users to explore 
 - **React**: A JavaScript library for building user interfaces. It allows us to create reusable UI components.
 - **TypeScript**: A superset of JavaScript, offering static type-checking and the latest ECMAScript features.
 - **TailwindCSS**: A utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center` and more to style your websites without leaving your HTML.
+- **react-hot-toast**:is a lightweight and customizable React library for displaying toast notifications easily and efficiently.
 - **Jest**: A delightful JavaScript Testing Framework with a focus on simplicity.
+
 
 ### Backend
 
@@ -56,17 +58,11 @@ Before you start, ensure you have `node` and `npm` installed on your machine.
 
 3. **Install the dependencies**:
 
-   - For Frontend:
+   - For install both dependecies run:
    
-     ```bash
-     cd frontend && npm install
-     ```
-
-   - For Backend:
-
-     ```bash
-     cd backend && npm install
-     ```
+   ```bash
+   npm install
+   ```
 
 ## Running the Application
 

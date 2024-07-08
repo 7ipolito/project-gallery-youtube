@@ -4,7 +4,7 @@ import { Video } from '../../interfaces/Video';
 import { isMobile } from '../../utils/isMobile';
 
 interface PlayerYoutubeProps {
-  video: Video;
+  video: Video | null;
   children: ReactNode;
 }
 
@@ -20,12 +20,12 @@ function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
 
   return (
     <div className="items-center justify-center">
-      <YouTube videoId={video.videoId} opts={opts} />
+      <YouTube videoId={video?.videoId} opts={opts} />
       <div className="w-full justify-between p-2 max-w-[1250px]">
-        <p className="text-2xl font-bold">{video.title}</p>
+        <p className="text-2xl font-bold">{video?.title}</p>
 
         <p>Description</p>
-        <p>{video.description}</p>
+        <p>{video?.description}</p>
       </div>
 
       <h2 className="text-2xl font-bold mb-2">Related Videos</h2>

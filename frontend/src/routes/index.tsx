@@ -22,7 +22,14 @@ import { api } from "../api/axios";
 
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
-       getVideos();
+       
+       const currentPath = location.pathname;
+       if(currentPath=="/watch"){
+        navigate('/');
+        
+       }
+
+       getVideos()
       // setVideos(null);
       // setVideoSelected(null);
     }
@@ -63,7 +70,7 @@ import { api } from "../api/axios";
           const response = await api.post('/videos/findbyPlaylistId', { playlistId: searchValue || search });
 
           if (response.data[0].videoId) {
-              navigate(`/playlist?playlistId=${searchValue}`);
+              navigate(`/watch?playlistId=${searchValue}`);
               // setVideos(response.data);
               // setVideoSelected(response.data[0]);
           
@@ -104,8 +111,6 @@ import { api } from "../api/axios";
     <>
   
 
-
-   
     <NavBar>
       <Input
         onChange={handleChange}
@@ -117,8 +122,8 @@ import { api } from "../api/axios";
     </NavBar>
     <Routes>
       <Route path="/" element={<Dashboard videos={allVideosDatabase}/>}/>
-      <Route path="/playlist/:playlistId" element={<Playlist/>}/>
-      <Route path="*" element={<NotFound/>}/>
+      <Route path="/watch" element={<Playlist/>}/>
+      {/* <Route path="*" element={<NotFound/>}/> */}
 
     </Routes>
   </>

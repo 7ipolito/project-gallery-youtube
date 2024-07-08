@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Input from '../Input';
 import { InputProps } from '../../interfaces/Input';
+import { Link } from 'react-router-dom';
 
 // import { Container } from './styles';
 interface NavBarProps {
@@ -11,7 +12,7 @@ const NavBar = ({ children }: NavBarProps) => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 items-center">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a className="flex items-center space-x-3 rtl:space-x-reverse ">
+        <Link to="/"><a className="flex items-center space-x-3 rtl:space-x-reverse ">
           <img
             src="/src/assets/logo.png"
             className="h-12 "
@@ -21,6 +22,7 @@ const NavBar = ({ children }: NavBarProps) => {
             Gallery Youtube
           </span>
         </a>
+        </Link>
         <div className="w-9/12">{children}</div>
       </div>
     </nav>

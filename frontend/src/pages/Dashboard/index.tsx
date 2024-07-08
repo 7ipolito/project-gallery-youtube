@@ -25,7 +25,12 @@ function Dashboard({videos}: DashboardProps) {
           const response = await api.post('/videos/findbyPlaylistId', { playlistId: playlistId });
 
           if (response.data[0].videoId) {
-              navigate(`/playlist?playlistId=${playlistId}`, { state: { video } });
+            const data ={
+              videoSelected:video,
+              videos:JSON.stringify(response.data)
+            }
+            console.log(response.data)
+              navigate(`/watch?playlistId=${playlistId}`,  { state:data });
             
           } else {
             throw new Error();

@@ -13,6 +13,7 @@ import NotFound from "../pages/NotFound";
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const [allVideosDatabase, setAllVideosDatabase] = useState<Video[] | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,12 +29,15 @@ import NotFound from "../pages/NotFound";
     }
   };
   const getInitialVideos = useCallback(async () => {
-   
+    
     try {
+      setIsLoading(true)
       const response = await api.get('/videos/findAllVideos');
       if (response.data[0].videoId) {
         setAllVideosDatabase(response.data);
+        setIsLoading(false)
       }
+
     } catch (error) {
       console.log();
       toast.error('Something were wrong');
@@ -53,6 +57,7 @@ import NotFound from "../pages/NotFound";
       console.log(searchValue.trim());
       if (searchValue.trim() || search ) {
         try {
+     
           // toast('Waiting..', toastConfig);
 
           const response = await api.post('/videos/findbyPlaylistId', { playlistId: searchValue || search });
@@ -67,6 +72,7 @@ import NotFound from "../pages/NotFound";
           }
         } catch (error) {
           try {
+            setIsLoading(true)
             const filteredVideos = allVideosDatabase?.filter((video) =>
               video.title.toLowerCase().includes(searchValue.toLowerCase()),
             );
@@ -78,6 +84,9 @@ import NotFound from "../pages/NotFound";
           } catch (error) {
             toast.error('Something were wrong');
           }
+        }finally{
+          setIsLoading(false)
+
         }
       } else {
         getInitialVideos();
@@ -102,7 +111,7 @@ import NotFound from "../pages/NotFound";
      
     </NavBar>
     <Routes>
-      <Route path="/" element={<Dashboard videos={allVideosDatabase}/>}/>
+      <Route path="/" element={<Dashboard videos={allVideosDatabase} isLoading={isLoading}/>}/>
       <Route path="/watch" element={<Playlist/>}/>
       <Route path="*" element={<NotFound/>}/>
 

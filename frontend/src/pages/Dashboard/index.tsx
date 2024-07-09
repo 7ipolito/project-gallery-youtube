@@ -1,13 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { api } from '../../api/axios';
 import YoutubeItem from '../../components/YoutubeItem';
 import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
 import { toastConfig } from '../../utils/toastConfig';
+import NotFound from '../NotFound';
+import { resolvePromise } from '../../utils/resolvePromise';
+import Loading from '../../components/Loading';
 
+const YoutubeItemList = lazy(()=> resolvePromise(import("../../components/YoutubeItemList")))
 interface DashboardProps{
   videos:Video[] | null
+  isLoading:boolean
 }
 
 function Dashboard({videos}: DashboardProps) {
@@ -48,23 +53,16 @@ function Dashboard({videos}: DashboardProps) {
      
       <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
         <div className="w-full flex items-center justify-center">
-          
-            {videos && (
               <div className="w-full flex flex-col ">
-                <p className="text-4xl font-bold pb-4">Videos added in database</p>
-                {videos?.map((video: Video) => (
-                  <YoutubeItem
-                    key={video.videoId}
-                    onPress={(e) => {
-                      handleGetInfoVideo
-                      handleGetInfoVideo(e, e.playlistId);
-                    }}
-                    video={video}
-                  />
-                ))}
+                <Suspense fallback={<Loading/>}>
+
+                  <YoutubeItemList items={videos}  onPress={(e) => {
+                        handleGetInfoVideo
+                        handleGetInfoVideo(e, e.playlistId);
+                      }}/>
+                </Suspense>
               </div>
-            )}
-        
+
         </div>
       </div>
       

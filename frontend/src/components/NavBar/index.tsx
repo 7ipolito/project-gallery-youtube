@@ -14,8 +14,11 @@ const NavBar = ({ children }: NavBarProps) => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/"><div className="flex items-center space-x-3 rtl:space-x-reverse ">
           <img
-            src="https://github.com/7ipolito/project-gallery-youtube/assets/45522944/7dfc7a5b-541d-42e1-84ee-8b60eeff5527"
-            className="h-12 "
+            src="/logo.png"
+            width={48}
+            loading='lazy'
+            height={48}
+            className="rounded-lg"
             alt="Gallery Youtube Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden lg:block">

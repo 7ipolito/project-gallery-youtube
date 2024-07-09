@@ -7,7 +7,7 @@ dist/
 
 
 # local env files
-.env
+/frontend/.env
 .env.local
 .env.*.local
 

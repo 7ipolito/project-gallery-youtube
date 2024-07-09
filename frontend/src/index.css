@@ -3,5 +3,12 @@
 @import "tailwindcss/utilities";
 
 body {
-  @apply font-roboto;
+  @font-face{
+    font-family: "Roboto";
+    src:local("Roboto-Regular"),
+    url('./assets/fonts/Roboto/Roboto-Regular.ttf') 
+  }
+
+  font-family: "Roboto", sans-serif;
+  font-display: swap;
 }

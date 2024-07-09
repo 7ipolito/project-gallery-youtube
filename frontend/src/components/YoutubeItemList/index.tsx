@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Video } from "../../interfaces/Video";
 import YoutubeItem from "../YoutubeItem";
 
@@ -6,10 +7,10 @@ interface YoutubeItemListProps{
     onPress: (videoSelected: Video) => any;
   }
 
+
+
 const YoutubeItemList = ({items, onPress}:YoutubeItemListProps)=>{
-  if (!items) {
-    return <div>Loading...</div>; // ou qualquer outro placeholder
-  }
+
   return(
   <>
     {items?.map((item:Video)=>(
@@ -20,4 +21,4 @@ const YoutubeItemList = ({items, onPress}:YoutubeItemListProps)=>{
 
 }
 
-export default YoutubeItemList;
+export default memo(YoutubeItemList);

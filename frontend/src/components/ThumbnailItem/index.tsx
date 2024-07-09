@@ -9,8 +9,8 @@ interface ThumbnailItemProps {
 
 const ThumbnailItem = ({ onPress, video }: ThumbnailItemProps) => {
   return (
-    <button className="" onClick={() => onPress(video)}>
-      {video.thumbnails.high && <img src={video.thumbnails.high.url} width={410} alt="Video related" />}
+    <button  onClick={() => onPress(video)}>
+      {video.thumbnails.maxres && <img className="rounded-2xl" src={video.thumbnails.maxres.url} width={410} alt="Video related" />}
     </button>
   );
 };

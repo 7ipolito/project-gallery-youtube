@@ -3,27 +3,21 @@ import { api } from '../../api/axios';
 import YoutubeItem from '../../components/YoutubeItem';
 import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
-import toast, { Toaster } from 'react-hot-toast';
-import { toastConfig } from '../../utils/toastConfig';
-import NotFound from '../NotFound';
 import { resolvePromise } from '../../utils/resolvePromise';
 import Loading from '../../components/Loading';
 
 const YoutubeItemList = lazy(()=> resolvePromise(import("../../components/YoutubeItemList")))
 interface DashboardProps{
   videos:Video[] | null
-  isLoading:boolean
 }
 
 function Dashboard({videos}: DashboardProps) {
   const navigate = useNavigate();
 
-
   const handleGetInfoVideo = useCallback(
     async (video: Video, playlistId:string) => {
       console.log(video);
         try {
-          toast('Waiting..',toastConfig);
           const response = await api.post('/videos/findbyPlaylistId', { playlistId: playlistId });
 
           if (response.data[0].videoId) {

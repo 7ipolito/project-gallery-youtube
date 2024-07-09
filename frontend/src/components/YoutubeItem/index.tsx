@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { Video } from '../../interfaces/Video';
 import { format } from 'date-fns';
 import { IoEyeSharp } from 'react-icons/io5';
@@ -32,19 +32,19 @@ const YoutubeItem = ({ onPress, video }: YoutubeItemProps) => {
   }, [video.thumbnails.maxres]);
 
   return (
-    <button className="w-full hover:bg-slate-100 rounded-2xl mb-1" onClick={() => onPress(video)}>
+    <button className="w-full hover:bg-slate-100 rounded-2xl mb-4" onClick={() => onPress(video)}>
       
         <div className="flex flex-row items-center">
           {!imageLoaded ? (
             <div
-              style={{ width: isMobile() ? 140 : 480, height: isMobile() ? 67 : 270 }}
+              style={{ width: isMobile() ? 120 : 480, height: isMobile() ? 67 : 270 }}
               className="bg-gray-200 animate-pulse rounded-xl mr-2 w-10"
             />
           ) : (
             <img
               src={video.thumbnails.maxres.url}
               loading="eager"
-              width={isMobile() ? 140 : 480}
+              width={isMobile() ? 120 : 480}
               alt="Video related"
               className=" transition-opacity duration-500 ease-in-out opacity-0 rounded-xl mr-2"
               onLoad={(e) => {
@@ -63,4 +63,4 @@ const YoutubeItem = ({ onPress, video }: YoutubeItemProps) => {
   );
 };
 
-export default YoutubeItem;
+export default memo(YoutubeItem);

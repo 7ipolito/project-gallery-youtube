@@ -19,9 +19,9 @@ function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
   };
 
   return (
-    <div className="items-center justify-center">
+    <div className="items-center justify-center ">
       <YouTube videoId={video?.videoId} opts={opts} />
-      <div className="w-full justify-between p-2 max-w-[1250px]">
+      <div className="w-full justify-between p-2 max-w-[1250px] rounded-2xl">
         <p className="text-2xl font-bold">{video?.title}</p>
 
         <p>Description</p>

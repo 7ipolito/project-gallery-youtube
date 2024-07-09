@@ -10,7 +10,7 @@ interface NavBarProps {
 
 const NavBar = ({ children }: NavBarProps) => {
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 items-center">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 items-center ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/"><div className="flex items-center space-x-3 rtl:space-x-reverse ">
           <img
@@ -18,7 +18,7 @@ const NavBar = ({ children }: NavBarProps) => {
             width={48}
             loading='lazy'
             height={48}
-            className="rounded-lg"
+            className="rounded-lg "
             alt="Gallery Youtube Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden lg:block">

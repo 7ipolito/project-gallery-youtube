@@ -47,26 +47,28 @@ function Dashboard({videos}: DashboardProps) {
  
 
   return (
-    <div>
+    <div className='flex flex-1 w-full h-[100vh]'>
     
 {/* <Toaster/> */}
      
+<Suspense fallback={<Loading/>}>
       <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
         <div className="w-full flex items-center justify-center">
-              <div className="w-full flex flex-col ">
-                <Suspense fallback={<Loading/>}>
+              <div className="w-full flex flex-col h-full">
+              
 
                   <YoutubeItemList items={videos}  onPress={(e) => {
                         handleGetInfoVideo
                         handleGetInfoVideo(e, e.playlistId);
                       }}/>
-                </Suspense>
+             
               </div>
 
         </div>
       </div>
-      
+      </Suspense>
     </div>
+    
   );
 }
 

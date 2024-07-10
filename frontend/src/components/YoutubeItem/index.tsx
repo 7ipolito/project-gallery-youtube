@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { Video } from '../../interfaces/Video';
 import { format } from 'date-fns';
 import { IoEyeSharp } from 'react-icons/io5';
-import { isMobile } from '../../utils/isMobile';
+import { isMobile } from '@/utils/utils';
 
 interface YoutubeItemProps {
   video: Video;

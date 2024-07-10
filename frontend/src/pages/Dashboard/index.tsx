@@ -3,8 +3,8 @@ import { api } from '../../api/axios';
 import YoutubeItem from '../../components/YoutubeItem';
 import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
-import { resolvePromise } from '../../utils/resolvePromise';
 import Loading from '../../components/Loading';
+import { resolvePromise } from '@/utils/utils';
 
 const YoutubeItemList = lazy(()=> resolvePromise(import("../../components/YoutubeItemList")))
 interface DashboardProps{

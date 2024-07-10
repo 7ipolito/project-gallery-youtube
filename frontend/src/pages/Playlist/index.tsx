@@ -6,7 +6,7 @@ import { Video } from '../../interfaces/Video';
 import { api } from '../../api/axios';
 
 import Loading from '../../components/Loading';
-import { resolvePromise } from '../../utils/resolvePromise';
+import { resolvePromise } from '@/utils/utils';
 const PlayerYoutube = lazy(() => resolvePromise(import('../../components/PlayerYoutube')));
 const ThumbnailItem = lazy(() => resolvePromise(import('../../components/ThumbnailItem')));
 

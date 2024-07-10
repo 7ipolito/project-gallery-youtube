@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import { Video } from '../../interfaces/Video';
-import { isMobile } from '../../utils/isMobile';
+import { isMobile } from '@/utils/utils';
 
 interface PlayerYoutubeProps {
   video: Video | null;

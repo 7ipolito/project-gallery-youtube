@@ -5,6 +5,10 @@ import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
 import Loading from '../../components/Loading';
 import { resolvePromise } from '@/utils/utils';
+import Input from '@/components/Input';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 
 const YoutubeItemList = lazy(()=> resolvePromise(import("../../components/YoutubeItemList")))
 interface DashboardProps{
@@ -46,10 +50,15 @@ function Dashboard({videos}: DashboardProps) {
 {/* <Toaster/> */}
      
 <Suspense fallback={<Loading/>}>
+
       <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
+      <Label>
+        Videos added
+      </Label>
         <div className="w-full flex items-center justify-center">
-              <div className="w-full flex flex-col h-full">
-              
+     
+              <div className="grid-cols-4 gap-4 lg:grid">
+           
 
                   <YoutubeItemList items={videos}  onPress={(e) => {
                         handleGetInfoVideo

@@ -59,18 +59,24 @@
     }
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @font-face{
-        font-family: "Barlow";
-        src:local("Barlow-Medium"),
-        url('./assets/fonts/Barlow/Barlow-Medium.ttf') 
-      }
+  @font-face {
+    font-family: 'Roboto-Medium';
+    src: url('../src/assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    /* Certifique-se de ajustar o caminho para onde você colocou sua fonte */
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../src/assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    /* Certifique-se de ajustar o caminho para onde você colocou sua fonte */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* Aplicar a fonte personalizada */
+  body {
+    font-family: 'Roboto-Medium', sans-serif;
     
-      font-family: "Barlow", sans-serif;
-      font-display: swap;
-    }
   }

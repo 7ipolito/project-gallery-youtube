@@ -95,6 +95,7 @@ import { Input } from "@/components/ui/input";
     <NavBar>
    
       <Input
+        className="h-12  text-xl font-roboto"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={searchValue}

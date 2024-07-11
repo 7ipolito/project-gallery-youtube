@@ -8,7 +8,7 @@ import { api } from '../../api/axios';
 import Loading from '../../components/Loading';
 import { resolvePromise } from '@/utils/utils';
 const PlayerYoutube = lazy(() => resolvePromise(import('../../components/PlayerYoutube')));
-const ThumbnailItem = lazy(() => resolvePromise(import('../../components/ThumbnailItem')));
+const YoutubeItem = lazy(() => resolvePromise(import('../../components/YoutubeItem')));
 
 function Playlist() {
   const location = useLocation();
@@ -22,7 +22,7 @@ function Playlist() {
           {videos?.filter((v: Video) => v.videoId !== videoSelected?.videoId)
             .map((v: Video) => (
            
-                <ThumbnailItem key={v.videoId} onPress={(e) => setVideoSelected(e)} video={v} />
+                <YoutubeItem key={v.videoId} onPress={(e) => setVideoSelected(e)} video={v} isRelatedVideo/>
             ))}
         </PlayerYoutube>
     ),
@@ -65,6 +65,7 @@ useEffect(()=>{
   
 },[])
   return (
+    <div className='flex flex-1 w-full h-[100vh]'>
     <Suspense fallback={<Loading/>}>
    <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
         <div className="w-full flex items-center justify-center">
@@ -72,6 +73,7 @@ useEffect(()=>{
         </div>
       </div>
       </Suspense>
+      </div>
   );
 }
 

@@ -52,21 +52,13 @@ function Dashboard({videos}: DashboardProps) {
 <Suspense fallback={<Loading/>}>
 
       <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
-      <Label>
-        Videos added
-      </Label>
         <div className="w-full flex items-center justify-center">
-     
               <div className="grid-cols-4 gap-4 lg:grid">
-           
-
                   <YoutubeItemList items={videos}  onPress={(e) => {
                         handleGetInfoVideo
                         handleGetInfoVideo(e, e.playlistId);
                       }}/>
-             
               </div>
-
         </div>
       </div>
       </Suspense>

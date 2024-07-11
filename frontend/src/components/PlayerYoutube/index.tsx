@@ -29,16 +29,14 @@ function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
       <YouTube videoId={video?.videoId} opts={opts} />
       <div className="justify-between py-2 lg:max-w-[1250px] rounded-2xl">
       <Label className="text-2xl font-bold">{video?.title}</Label>
-        <Accordion type="single" collapsible className=" bg-slate-50 rounded-lg p-2">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Description</AccordionTrigger>
-        <AccordionContent>
-          {video?.description}
-        </AccordionContent>
-      </AccordionItem>
-  
-    
-    </Accordion>
+          <Accordion type="single" collapsible className=" bg-slate-50 rounded-lg p-2">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Description</AccordionTrigger>
+              <AccordionContent>
+                {video?.description}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
       </div>
 
       <Label className="text-2xl font-bold">Related Videos</Label>

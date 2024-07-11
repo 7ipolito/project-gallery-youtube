@@ -1,22 +1,22 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-export function isMobile(){
-  return window.innerWidth < 720
+export function isMobile() {
+  return window.innerWidth < 720;
 }
 
 export async function resolvePromise<T>(promise: Promise<T>): Promise<T> {
-	await new Promise((resolve) => {
-		setTimeout(resolve, 3000);
-	});
-	return await promise;
+  await new Promise((resolve) => {
+    setTimeout(resolve, 3000);
+  });
+  return await promise;
 }
 
-export const toastConfig={
+export const toastConfig = {
   duration: 4000,
   position: 'top-center',
 
@@ -38,4 +38,4 @@ export const toastConfig={
     role: 'status',
     'aria-live': 'polite',
   },
-}
+};

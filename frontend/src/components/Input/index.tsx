@@ -1,7 +1,4 @@
-import React from 'react';
 import { InputProps } from '../../interfaces/Input';
-
-// import { Container } from './styles';
 
 const Input = ({ label, placeholder, value, onChange, onKeyDown }: InputProps) => {
   return (

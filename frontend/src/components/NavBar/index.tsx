@@ -1,8 +1,6 @@
-import React, { ReactNode } from 'react';
-import Input from '../Input';
-import { InputProps } from '../../interfaces/Input';
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { Label } from "@/components/ui/label"
+import { Label } from '@/components/ui/label';
 
 // import { Container } from './styles';
 interface NavBarProps {
@@ -18,7 +16,7 @@ const NavBar = ({ children }: NavBarProps) => {
             <img
               src="/logo.svg"
               width={48}
-              loading='lazy'
+              loading="lazy"
               height={48}
               className="rounded-lg "
               alt="Gallery Youtube Logo"
@@ -28,7 +26,7 @@ const NavBar = ({ children }: NavBarProps) => {
             </Label>
           </div>
         </Link>
-        <div className='max-w-screen-lg w-9/12'>{children}</div>
+        <div className="max-w-screen-lg w-9/12">{children}</div>
       </div>
     </nav>
   );

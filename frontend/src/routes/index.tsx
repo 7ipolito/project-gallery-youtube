@@ -3,12 +3,12 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Playlist from "../pages/Playlist";
 import NavBar from "../components/NavBar";
-import Input from "../components/Input";
 import { useCallback, useEffect, useState } from "react";
 import { Video } from "../interfaces/Video";
 import { api } from "../api/axios";
 import toast, { Toaster } from 'react-hot-toast';
 import NotFound from "../pages/NotFound";
+import { Input } from "@/components/ui/input";
  function App(){
   const navigate = useNavigate();
 
@@ -69,7 +69,6 @@ import NotFound from "../pages/NotFound";
           }
         } catch (error) {
           try {
-            setIsLoading(true)
             const filteredVideos = allVideosDatabase?.filter((video) =>
               video.title.toLowerCase().includes(searchValue.toLowerCase()),
             );
@@ -81,9 +80,6 @@ import NotFound from "../pages/NotFound";
           } catch (error) {
             toast.error('Something were wrong');
           }
-        }finally{
-          setIsLoading(false)
-
         }
       } else {
         getInitialVideos();
@@ -97,13 +93,13 @@ import NotFound from "../pages/NotFound";
         <Toaster />
 
     <NavBar>
-
+   
       <Input
+        className="h-12  text-xl font-roboto"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={searchValue}
-        label={'PlaylistId'}
-        placeholder={'Search by playlistId or from videos in database  '}
+        placeholder={'Search by playlistId or from videos in database.'}
       />
      
     </NavBar>

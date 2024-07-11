@@ -3,8 +3,12 @@ import { api } from '../../api/axios';
 import YoutubeItem from '../../components/YoutubeItem';
 import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
-import { resolvePromise } from '../../utils/resolvePromise';
 import Loading from '../../components/Loading';
+import { resolvePromise } from '@/utils/utils';
+import Input from '@/components/Input';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 
 const YoutubeItemList = lazy(()=> resolvePromise(import("../../components/YoutubeItemList")))
 interface DashboardProps{
@@ -46,18 +50,15 @@ function Dashboard({videos}: DashboardProps) {
 {/* <Toaster/> */}
      
 <Suspense fallback={<Loading/>}>
+
       <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
         <div className="w-full flex items-center justify-center">
-              <div className="w-full flex flex-col h-full">
-              
-
+              <div className="grid-cols-4 gap-4 lg:grid">
                   <YoutubeItemList items={videos}  onPress={(e) => {
                         handleGetInfoVideo
                         handleGetInfoVideo(e, e.playlistId);
                       }}/>
-             
               </div>
-
         </div>
       </div>
       </Suspense>

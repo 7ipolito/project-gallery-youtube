@@ -1,3 +1,4 @@
+import path from "path"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import viteImagemin from 'vite-plugin-imagemin';
@@ -38,6 +39,11 @@ export default defineConfig({
       compress: {
         drop_console: true,
       },
+    },
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 })

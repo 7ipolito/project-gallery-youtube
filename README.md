@@ -1,5 +1,5 @@
 # Project Gallery Youtube
-<img src="https://github.com/7ipolito/project-gallery-youtube/assets/45522944/169306e7-02be-4681-9ae4-b4a9eedcb0ee" width="200px"/>
+<img src="https://github.com/user-attachments/assets/13d8d8fc-bee8-4713-82f7-a8059f7c7808" width="200px"/>
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/Abo1zu?referralCode=alphasec)
 
@@ -20,15 +20,26 @@ Welcome to project-gallery-youtube repository 🎥
 This application was created by me, Allan Hipólito. It allows users to explore and watch YouTube videos in an intuitive and dynamic way. Utilizing Node.js, Prisma, and deployed on Railway, the gallery features a sleek and responsive interface, seamlessly integrating high-quality and diverse content from YouTube.
 
 ## Technologies Used
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Nest](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+![Tailwind](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 
+	
 ### Frontend
 
 - **Vite**: A build tool that boasts a faster and leaner development experience for modern web projects.
 - **React**: A JavaScript library for building user interfaces. It allows us to create reusable UI components.
 - **TypeScript**: A superset of JavaScript, offering static type-checking and the latest ECMAScript features.
 - **TailwindCSS**: A utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center` and more to style your websites without leaving your HTML.
-- **react-hot-toast**:is a lightweight and customizable React library for displaying toast notifications easily and efficiently.
 - **Jest**: A delightful JavaScript Testing Framework with a focus on simplicity.
+- **react-navigation**: React Navigation is a flexible and extensible navigation library for React Native that enables seamless navigation between different screens and handling deep linking within a mobile app.
+- **react-hot-toast**:is a lightweight and customizable React library for displaying toast notifications easily and efficiently.
+- **react-redux**: Redux is a predictable state container for JavaScript applications, designed to manage and centralize the application’s state using a single store and unidirectional data flow.
 
 
 ### Backend

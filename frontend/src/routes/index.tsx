@@ -10,12 +10,16 @@ import { api } from '../api/axios';
 import toast, { Toaster } from 'react-hot-toast';
 import NotFound from '../pages/NotFound';
 import { Input } from '@/components/ui/input';
+import { useDispatch } from 'react-redux';
+import { addVideosFromDataBase, putVideosSearched } from '@/store/reducers/videos';
+import { useSelector } from 'react-redux';
+
 function App() {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
-  const [allVideosDatabase, setAllVideosDatabase] = useState<Video[] | null>(null);
-
+  const dispatch = useDispatch();
+  const videos = useSelector((state) => state.videos);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
@@ -29,7 +33,8 @@ function App() {
     try {
       const response = await api.get('/videos/findAllVideos');
       if (response.data[0].videoId) {
-        setAllVideosDatabase(response.data);
+        console.log(response.data);
+        dispatch(addVideosFromDataBase(response.data));
       }
     } catch (error) {
       console.log();
@@ -52,6 +57,7 @@ function App() {
 
           if (response.data[0].videoId) {
             navigate(`/watch?playlistId=${searchValue}`);
+
             // setVideos(response.data);
             // setVideoSelected(response.data[0]);
           } else {
@@ -59,15 +65,18 @@ function App() {
           }
         } catch (error) {
           try {
-            const filteredVideos = allVideosDatabase?.filter((video) =>
+            const filteredVideos = videos?.filter((video) =>
               video.title.toLowerCase().includes(searchValue.toLowerCase()),
             );
+            console.log(filteredVideos);
             if (filteredVideos![0].videoId) {
-              setAllVideosDatabase(filteredVideos);
+              console.log(filteredVideos);
+              dispatch(putVideosSearched(filteredVideos));
             } else {
               throw new Error();
             }
           } catch (error) {
+            console.log(error);
             toast.error('Something were wrong');
           }
         }
@@ -76,7 +85,7 @@ function App() {
         // setVideoSelected(allVideosDatabase ? allVideosDatabase[0] : null);
       }
     },
-    [allVideosDatabase, getInitialVideos, navigate, searchValue],
+    [getInitialVideos, navigate, searchValue],
   );
   return (
     <>
@@ -91,7 +100,7 @@ function App() {
         />
       </NavBar>
       <Routes>
-        <Route path="/" element={<Dashboard videos={allVideosDatabase} />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/watch" element={<Playlist />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

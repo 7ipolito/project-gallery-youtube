@@ -13,7 +13,13 @@ function Playlist() {
   const location = useLocation();
   const [videos, setVideos] = useState<Video[] | null>(null);
   const [videoSelected, setVideoSelected] = useState<Video | null>(null);
+  const [searchValue, setSearchValue] = useState('');
 
+  const handleKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      getVideos();
+    }
+  };
   const playerYoutube = useMemo(
     () => (
       <PlayerYoutube video={videoSelected}>

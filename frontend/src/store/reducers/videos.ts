@@ -1,5 +1,7 @@
 import { Video } from '@/interfaces/Video';
 import { createSlice } from '@reduxjs/toolkit';
+import { getInitialVideos, getVideos } from '../actions/videos';
+import toast from 'react-hot-toast';
 
 const initialState: Video[] = [];
 
@@ -17,6 +19,20 @@ const videosSlice = createSlice({
 
       return newState;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getInitialVideos.fulfilled, (state, { payload }) => {
+        const newState = payload;
+        console.log(newState);
+        return newState;
+      })
+      .addCase(getInitialVideos.rejected, () => {
+        toast.error('Failed to fetch initial videos');
+      })
+      .addCase(getVideos.rejected, () => {
+        toast.error('Failed to fetch  videos');
+      });
   },
 });
 

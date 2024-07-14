@@ -36,6 +36,7 @@
     "react-router": "6",
     "react-router-dom": "^6.24.0",
     "react-youtube": "^10.1.0",
+    "redux-thunk": "^3.1.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "tw-elements": "^2.0.0",

@@ -13,13 +13,7 @@ function Playlist() {
   const location = useLocation();
   const [videos, setVideos] = useState<Video[] | null>(null);
   const [videoSelected, setVideoSelected] = useState<Video | null>(null);
-  const [searchValue, setSearchValue] = useState('');
 
-  const handleKeyDown = (event: any) => {
-    if (event.key === 'Enter') {
-      getVideos();
-    }
-  };
   const playerYoutube = useMemo(
     () => (
       <PlayerYoutube video={videoSelected}>
@@ -52,7 +46,7 @@ function Playlist() {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     fetchVideosByPlaylistId();
@@ -60,7 +54,7 @@ function Playlist() {
     console.log(location);
 
     // console.log(location.state.videoSelected)
-  }, []);
+  }, [fetchVideosByPlaylistId, location]);
   return (
     <div className="flex flex-1 w-full h-[100vh]">
       <Suspense fallback={<Loading />}>

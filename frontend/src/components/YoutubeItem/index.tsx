@@ -2,7 +2,7 @@ import { memo, useEffect, useState } from 'react';
 import { Video } from '../../interfaces/Video';
 import { format } from 'date-fns';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '../ui/card';
 import { Skeleton } from '../ui/skeleton';
 import LinesEllipsis from 'react-lines-ellipsis';
 

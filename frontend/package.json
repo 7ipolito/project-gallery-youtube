@@ -17,6 +17,7 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
+    "@types/react-lines-ellipsis": "^0.15.6",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",

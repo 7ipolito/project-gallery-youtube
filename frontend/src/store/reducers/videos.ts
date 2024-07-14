@@ -19,6 +19,10 @@ const videosSlice = createSlice({
 
       return newState;
     },
+    setVideosRelated: (state, { payload }) => {
+      const newState = payload;
+      return newState;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -37,6 +41,6 @@ const videosSlice = createSlice({
   },
 });
 
-export const { addVideosFromDataBase, putVideosSearched } = videosSlice.actions;
+export const { addVideosFromDataBase, putVideosSearched, setVideosRelated } = videosSlice.actions;
 
 export default videosSlice.reducer;

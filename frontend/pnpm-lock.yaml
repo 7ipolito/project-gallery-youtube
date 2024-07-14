@@ -26,6 +26,9 @@ dependencies:
   '@testing-library/react':
     specifier: ^14.0.0
     version: 14.3.1(react-dom@18.3.1)(react@18.3.1)
+  '@types/react-lines-ellipsis':
+    specifier: ^0.15.6
+    version: 0.15.6
   '@types/react-router-dom':
     specifier: ^5.3.3
     version: 5.3.3
@@ -2967,6 +2970,10 @@ packages:
       '@types/node': 20.14.10
     dev: false
 
+  /@types/lodash@4.17.6:
+    resolution: {integrity: sha512-OpXEVoCKSS3lQqjx9GGGOapBeuW5eUboYHRlHP9urXPX25IKZ6AnP5ZRxtVf63iieUbsHxLn8NQ5Nlftc6yzAA==}
+    dev: false
+
   /@types/minimatch@5.1.2:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: false
@@ -2987,6 +2994,13 @@ packages:
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
     dependencies:
       '@types/react': 18.3.3
+
+  /@types/react-lines-ellipsis@0.15.6:
+    resolution: {integrity: sha512-76cyWLa1SnLGOPQ+yJy7Ea0D2rWFt3dHOxO+xTQxyBCZdKrlbd/nHpldDSAqexZaI4gGsfHFRG7r0Z4neWeyJA==}
+    dependencies:
+      '@types/lodash': 4.17.6
+      '@types/react': 18.3.3
+    dev: false
 
   /@types/react-router-dom@5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}

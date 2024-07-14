@@ -1,10 +1,12 @@
 // store.ts
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import videosReducer from './reducers/videos';
+import videoSelectedReducer from './reducers/videoSelected';
 
 const store = configureStore({
   reducer: {
     videos: videosReducer,
+    videoSelected: videoSelectedReducer,
   },
 });
 

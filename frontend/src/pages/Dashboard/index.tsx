@@ -2,14 +2,13 @@ import { lazy, Suspense, useCallback, useEffect } from 'react';
 import { api } from '../../api/axios';
 import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
-import Loading from '../../components/Loading';
 import { resolvePromise } from '@/utils/utils';
 import { useDispatch, useSelector } from 'react-redux';
-import { addVideosFromDataBase } from '@/store/reducers/videos';
-import toast from 'react-hot-toast';
-import { getInitialVideos } from '@/store/actions/videos';
 
-const YoutubeItemList = lazy(() => resolvePromise(import('../../components/YoutubeItemList')));
+import { getInitialVideos } from '@/store/actions/videos';
+import { setVideoSelected } from '@/store/reducers/videoSelected';
+import { setVideosRelated } from '@/store/reducers/videos';
+import Loading from '@/components/Loading';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -18,7 +17,20 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(getInitialVideos());
-  }, [dispatch]);
+  }, []);
+
+  const YoutubeItemList = lazy(() =>
+    resolvePromise(
+      resolvePromise(getInitialVideos()).then(
+        () =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(import('../../components/YoutubeItemList/index'));
+            }, 1000); // Aguarda 1 segundo (1000 milissegundos)
+          }),
+      ),
+    ),
+  );
 
   const handleGetInfoVideo = useCallback(
     async (video: Video, playlistId: string) => {
@@ -27,12 +39,10 @@ function Dashboard() {
         const response = await api.post('/videos/findbyPlaylistId', { playlistId: playlistId });
 
         if (response.data[0].videoId) {
-          const data = {
-            videoSelected: video,
-            videos: JSON.stringify(response.data),
-          };
-          console.log(response.data);
-          navigate(`/watch?playlistId=${playlistId}`, { state: data });
+          dispatch(setVideoSelected(video));
+          console.log(video);
+          dispatch(setVideosRelated(response.data));
+          navigate(`/watch?playlistId=${playlistId}`);
         } else {
           throw new Error();
         }

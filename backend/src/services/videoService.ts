@@ -27,7 +27,11 @@ export class VideoService {
                 },
             })
         } else {
-            return await this.prisma.video.findMany()
+            return await this.prisma.video.findMany({
+                orderBy: {
+                    createdAt: 'desc',
+                },
+            })
         }
     }
 

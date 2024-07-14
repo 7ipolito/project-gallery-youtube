@@ -30,7 +30,8 @@ const videosSlice = createSlice({
       .addCase(getInitialVideos.rejected, () => {
         toast.error('Failed to fetch initial videos');
       })
-      .addCase(getVideos.rejected, () => {
+      .addCase(getVideos.rejected, (state, action) => {
+        console.error(action.error);
         toast.error('Failed to fetch  videos');
       });
   },

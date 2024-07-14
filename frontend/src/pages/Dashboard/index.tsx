@@ -7,7 +7,7 @@ import { resolvePromise } from '@/utils/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVideosFromDataBase } from '@/store/reducers/videos';
 import toast from 'react-hot-toast';
-import { getInitialVideos } from '@/store/actions/actions';
+import { getInitialVideos } from '@/store/actions/videos';
 
 const YoutubeItemList = lazy(() => resolvePromise(import('../../components/YoutubeItemList')));
 

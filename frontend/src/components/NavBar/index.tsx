@@ -1,13 +1,13 @@
-import { ReactNode, useCallback, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Label } from '@/components/ui/label';
-import Input from '../Input';
 import { api } from '@/api/axios';
 import { putVideosSearched } from '@/store/reducers/videos';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/store';
-import { getVideos } from '@/store/actions/actions';
+import { getInitialVideos, getVideos } from '@/store/actions/videos';
+import { Input } from '../ui/input';
 
 // import { Container } from './styles';
 // interface NavBarProps {
@@ -16,17 +16,35 @@ import { getVideos } from '@/store/actions/actions';
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const [initialized, setInitialized] = useState(false);
+  const dispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState('');
-  const dispatch = useDispatch<AppDispatch>();
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
+  useEffect(() => {
+    if (initialized && searchValue.trim() === '') {
+      dispatch(getInitialVideos());
+    }
+  }, [dispatch, initialized, searchValue]);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      setInitialized(true);
+      searchVideos();
+    }
   };
 
-  const handleKeyDown = (event: any) => {
-    if (event.key === 'Enter') {
-      dispatch(getVideos(searchValue));
+  const searchVideos = () => {
+    if (searchValue.trim() !== '') {
+      const data = {
+        searchValue,
+        navigate: navigate, // Substitua com o valor correto ou remova se não for necessário
+      };
+      dispatch(getVideos(data));
     }
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
   };
 
   return (
@@ -53,7 +71,7 @@ const NavBar = () => {
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             value={searchValue}
-            placeholder={'Search by playlistId or from videos in database.'}
+            placeholder={'Press enter to search by playlistId or by video name.'}
           />
         </div>
       </div>

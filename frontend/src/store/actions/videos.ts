@@ -2,32 +2,29 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../index';
 import { api } from '../../api/axios';
-
+import { useNavigate } from 'react-router';
 import { addVideosFromDataBase, putVideosSearched } from '../reducers/videos';
 
-export const getInitialVideos = createAsyncThunk<void, void, { state: RootState }>(
-  'videos/getInitialVideos',
-  async () => {
-    try {
-      const response = await api.get('/videos/findAllVideos');
-      if (response.data[0].videoId) {
-        console.log(response.data);
-        return response.data;
-      }
-    } catch (error) {
-      console.error(error);
+export const getInitialVideos = createAsyncThunk<{ state: RootState }>('videos/getInitialVideos', async () => {
+  try {
+    const response = await api.get('/videos/findAllVideos');
+    if (response.data[0].videoId) {
+      console.log(response.data);
+      return response.data;
     }
-  },
-);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-export const getVideos = createAsyncThunk<void, string | undefined, { state: RootState }>(
+export const getVideos = createAsyncThunk<void, any | undefined, { state: RootState }>(
   'videos/getVideos',
-  async (searchValue, { dispatch, getState }) => {
-    if (searchValue) {
+  async ({ searchValue, navigate }, { dispatch, getState }) => {
+    if (searchValue.trim()) {
       try {
         const response = await api.post('/videos/findbyPlaylistId', { playlistId: searchValue });
         if (response.data[0].videoId) {
-          // navigate(`/watch?playlistId=${searchValue}`);
+          navigate(`/watch?playlistId=${searchValue}`);
         } else {
           throw new Error('No videos found');
         }
@@ -47,7 +44,7 @@ export const getVideos = createAsyncThunk<void, string | undefined, { state: Roo
         }
       }
     } else {
-      throw new Error('Search value is empty');
+      dispatch(getInitialVideos());
     }
   },
 );

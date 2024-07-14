@@ -13,7 +13,7 @@ interface YoutubeItemProps {
   onPress: (videoSelected: Video) => any;
 }
 
-const YoutubeItem = ({ onPress, video, isRelatedVideo }: YoutubeItemProps) => {
+const YoutubeItem = ({ onPress, video, isRelatedVideo = false }: YoutubeItemProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
@@ -38,11 +38,11 @@ const YoutubeItem = ({ onPress, video, isRelatedVideo }: YoutubeItemProps) => {
     <div className="flex flex-row items-center">
       {!imageLoaded ? (
         <>
-          <Skeleton className={` h-${isRelatedVideo ? '96' : '80'} rounded-2xl animate-pulse`} />
+          <Skeleton className={`w-full ${isRelatedVideo ? 'h-96' : 'h-80'} rounded-2xl animate-pulse `} />
         </>
       ) : (
         <Card
-          className={`cursor-pointer  h-${isRelatedVideo ? '96' : '80'} hover:bg-slate-100 rounded-2xl mb-4`}
+          className={`w-full cursor-pointer   ${isRelatedVideo ? 'h-96' : 'h-80'} hover:bg-slate-100 rounded-2xl mb-4`}
           onClick={() => onPress(video)}
         >
           <CardHeader className="h-28 ">

@@ -1,5 +1,5 @@
 # Project Gallery Youtube
-<img loading="lazy" src="https://github.com/7ipolito/project-gallery-youtube/assets/45522944/7dfc7a5b-541d-42e1-84ee-8b60eeff5527" width="200px"/>
+<img src="https://github.com/user-attachments/assets/13d8d8fc-bee8-4713-82f7-a8059f7c7808" width="200px"/>
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/Abo1zu?referralCode=alphasec)
 
@@ -14,20 +14,30 @@ Welcome to project-gallery-youtube repository 🎥
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
 - [Conclusion](#conclusion)
-
+  
 ## Introduction
 
-This application was created by me, Allan Hipólito. It allows users to explore and watch YouTube videos in an intuitive and dynamic way. Utilizing Node.js, Prisma, and deployed on Railway, the gallery features a sleek and responsive interface, seamlessly integrating high-quality and diverse content from YouTube.
+This application was created by me Allan Hipólito. It allows users to explore and watch YouTube videos in an intuitive and dynamic way. the gallery features a sleek and responsive interface, seamlessly integrating high-quality and diverse content from YouTube.
 
 ## Technologies Used
-
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Nest](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+![Tailwind](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+	
 ### Frontend
 
 - **Vite**: A build tool that boasts a faster and leaner development experience for modern web projects.
 - **React**: A JavaScript library for building user interfaces. It allows us to create reusable UI components.
 - **TypeScript**: A superset of JavaScript, offering static type-checking and the latest ECMAScript features.
 - **TailwindCSS**: A utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center` and more to style your websites without leaving your HTML.
-- **Jest**: A delightful JavaScript Testing Framework with a focus on simplicity.
+- **react-navigation**: React Navigation is a flexible and extensible navigation library for React Native that enables seamless navigation between different screens and handling deep linking within a mobile app.
+- **react-hot-toast**:is a lightweight and customizable React library for displaying toast notifications easily and efficiently.
+- **react-redux**: Redux is a predictable state container for JavaScript applications, designed to manage and centralize the application’s state using a single store and unidirectional data flow.
+
 
 ### Backend
 
@@ -38,7 +48,14 @@ This application was created by me, Allan Hipólito. It allows users to explore 
 - **Jest**: Used for writing unit and integration tests for the backend.
 - **PostgreSQL**: A powerful, open-source object-relational database system.
 
+## Configure the enviroment variables
+- Before install the depedencies it is necessary you get a `key` you will access [Google console](https://console.cloud.google.com/) and create a key without restrictions.
+- After you will put you key in .env following the model in .env.example
+- Also it is necessary to configure the database, i recommend you use [Supabase](https://supabase.com/) it will appear same like this `postgresql://postgres.[YOUR-USER]:[YOUR-PASSWORD][YOUR-URL]:6543/postgres`
+
+
 ## Installation
+
 
 Before you start, ensure you have `node` and `npm` installed on your machine. 
 
@@ -56,17 +73,18 @@ Before you start, ensure you have `node` and `npm` installed on your machine.
 
 3. **Install the dependencies**:
 
-   - For Frontend:
+   - For install both dependecies run:
    
-     ```bash
-     cd frontend && npm install
-     ```
+   ```bash
+   npm install
+   ```
 
-   - For Backend:
+   - To inicialize prisma run:
+   
+   ```bash
+   cd backend && npx run prisma generate
+   ```
 
-     ```bash
-     cd backend && npm install
-     ```
 
 ## Running the Application
 
@@ -98,6 +116,6 @@ Ensure that the frontend and backend are configured to run on separate ports to 
 
 ## Conclusion
 
-This application, created by me, Allan Hipólito, allows users to explore and watch YouTube videos dynamically. It features a sleek interface where users can seamlessly navigate related videos from their initial selection. The project is currently 80% complete, with ongoing enhancements to enrich the user experience.
+I hope that you to enjoy this project, he was designed with best practices using all features of the latest version of react using Suspense component, useMemo, lazy import and redux.🚀
 
 ---

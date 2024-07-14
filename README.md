@@ -17,7 +17,7 @@ Welcome to project-gallery-youtube repository 🎥
   
 ## Introduction
 
-This application was created by me, Allan Hipólito. It allows users to explore and watch YouTube videos in an intuitive and dynamic way. Utilizing Node.js, Prisma, and deployed on Railway, the gallery features a sleek and responsive interface, seamlessly integrating high-quality and diverse content from YouTube.
+This application was created by me Allan Hipólito. It allows users to explore and watch YouTube videos in an intuitive and dynamic way. the gallery features a sleek and responsive interface, seamlessly integrating high-quality and diverse content from YouTube.
 
 ## Technologies Used
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
@@ -27,8 +27,6 @@ This application was created by me, Allan Hipólito. It allows users to explore 
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-
 	
 ### Frontend
 
@@ -36,7 +34,6 @@ This application was created by me, Allan Hipólito. It allows users to explore 
 - **React**: A JavaScript library for building user interfaces. It allows us to create reusable UI components.
 - **TypeScript**: A superset of JavaScript, offering static type-checking and the latest ECMAScript features.
 - **TailwindCSS**: A utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center` and more to style your websites without leaving your HTML.
-- **Jest**: A delightful JavaScript Testing Framework with a focus on simplicity.
 - **react-navigation**: React Navigation is a flexible and extensible navigation library for React Native that enables seamless navigation between different screens and handling deep linking within a mobile app.
 - **react-hot-toast**:is a lightweight and customizable React library for displaying toast notifications easily and efficiently.
 - **react-redux**: Redux is a predictable state container for JavaScript applications, designed to manage and centralize the application’s state using a single store and unidirectional data flow.
@@ -51,7 +48,14 @@ This application was created by me, Allan Hipólito. It allows users to explore 
 - **Jest**: Used for writing unit and integration tests for the backend.
 - **PostgreSQL**: A powerful, open-source object-relational database system.
 
+## Configure the enviroment variables
+- Before install the depedencies it is necessary you get a `key` you will access [Google console](https://console.cloud.google.com/) and create a key without restrictions.
+- After you will put you key in .env following the model in .env.example
+- Also it is necessary to configure the database, i recommend you use [Supabase](https://supabase.com/) it will appear same like this `postgresql://postgres.[YOUR-USER]:[YOUR-PASSWORD][YOUR-URL]:6543/postgres`
+
+
 ## Installation
+
 
 Before you start, ensure you have `node` and `npm` installed on your machine. 
 
@@ -74,6 +78,13 @@ Before you start, ensure you have `node` and `npm` installed on your machine.
    ```bash
    npm install
    ```
+
+   - To inicialize prisma run:
+   
+   ```bash
+   cd backend && npx run prisma generate
+   ```
+
 
 ## Running the Application
 
@@ -105,6 +116,6 @@ Ensure that the frontend and backend are configured to run on separate ports to 
 
 ## Conclusion
 
-This application, created by me, Allan Hipólito, allows users to explore and watch YouTube videos dynamically. It features a sleek interface where users can seamlessly navigate related videos from their initial selection. The project is currently 80% complete, with ongoing enhancements to enrich the user experience.
+I hope that you to enjoy this project, he was designed with best practices using all features of the latest version of react using Suspense component, useMemo, lazy import and redux.🚀
 
 ---

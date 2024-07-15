@@ -1,15 +1,13 @@
 // actions.ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../index';
 import { api } from '../../api/axios';
-import { putVideosSearched, setVideosRelated } from '../reducers/videos';
-import { setVideoSelected } from '../reducers/videoSelected';
+import { putVideosSearched, setVideoSelected, setVideosRelated } from '../reducers/videos';
+import { Video } from '@/interfaces/Video';
 
-export const getInitialVideos = createAsyncThunk<{ state: RootState }>('videos/getInitialVideos', async () => {
+export const getInitialVideos = createAsyncThunk('videos/getInitialVideos', async () => {
   try {
     const response = await api.get('/videos/findAllVideos');
     if (response.data[0].videoId) {
-      console.log(response.data);
       return response.data;
     }
   } catch (error) {
@@ -17,32 +15,30 @@ export const getInitialVideos = createAsyncThunk<{ state: RootState }>('videos/g
   }
 });
 
-export const getVideosByURLPlaylistId = createAsyncThunk<void, any | undefined, { state: RootState }>(
+export const getVideosByURLPlaylistId = createAsyncThunk(
   'videos/getVideosURL',
-  async ({ location }, { dispatch, getState }) => {
+  async ({ location }: any, { dispatch, getState }: any) => {
     try {
-      console.log(getState().videoSelected);
-      console.log(!getState().videos);
-
       // eslint-disable-next-line eqeqeq
       if (!getState().videoSelected?.videoId) {
         const params = new URLSearchParams(location.search);
         const playlistId = params.get('playlistId');
         const response = await api.post('/videos/findbyPlaylistId', { playlistId: playlistId });
         if (response.data[0].videoId) {
-          dispatch(setVideosRelated(response.data));
-          dispatch(setVideoSelected(response.data[0]));
+          return response.data;
         }
       }
     } catch (error) {
+      throw new Error();
+
       console.log(error);
     }
   },
 );
 
-export const getVideos = createAsyncThunk<void, any | undefined, { state: RootState }>(
+export const getVideos = createAsyncThunk(
   'videos/getVideos',
-  async ({ searchValue, navigate }, { dispatch, getState }) => {
+  async ({ searchValue, navigate }: any, { dispatch, getState }: any) => {
     if (searchValue.trim()) {
       try {
         const response = await api.post('/videos/findbyPlaylistId', { playlistId: searchValue });
@@ -54,7 +50,7 @@ export const getVideos = createAsyncThunk<void, any | undefined, { state: RootSt
         }
       } catch (error) {
         try {
-          const filteredVideos = getState().videos?.filter((video: { title: string }) =>
+          const filteredVideos = getState().videos.videoState?.filter((video: { title: string }) =>
             video.title.toLowerCase().includes(searchValue.toLowerCase()),
           );
           if (filteredVideos && filteredVideos.length > 0) {

@@ -67,6 +67,7 @@ const NavBar = () => {
         </Link>
         <div className="max-w-screen-lg w-9/12">
           <Input
+            role="search"
             className="h-12 text-xl font-roboto"
             onChange={handleChange}
             onKeyDown={handleKeyDown}

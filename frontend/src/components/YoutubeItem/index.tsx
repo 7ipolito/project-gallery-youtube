@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '../ui/card';
 import { Skeleton } from '../ui/skeleton';
 import LinesEllipsis from 'react-lines-ellipsis';
+import { isMobile } from '@/utils/utils';
 
 interface YoutubeItemProps {
   video: Video;
@@ -38,11 +39,15 @@ const YoutubeItem = ({ onPress, video, isRelatedVideo = false }: YoutubeItemProp
     <div className="flex flex-row items-center">
       {!imageLoaded ? (
         <>
-          <Skeleton className={`w-full ${isRelatedVideo ? 'h-96' : 'h-80'} rounded-2xl animate-pulse `} />
+          <Skeleton
+            className={`w-full rounded-2xl animate-pulse `}
+            style={isRelatedVideo ? { height: 384 } : { height: 320 }}
+          />
         </>
       ) : (
         <Card
-          className={`w-full cursor-pointer   ${isRelatedVideo ? 'h-96' : 'h-80'} hover:bg-slate-100 rounded-2xl mb-4`}
+          className={`w-full cursor-pointer hover:bg-slate-100 rounded-2xl mb-4`}
+          style={isRelatedVideo ? { height: 384 } : { height: isMobile() ? 370 : 320 }}
           onClick={() => onPress(video)}
         >
           <CardHeader className="h-28 ">
@@ -59,8 +64,8 @@ const YoutubeItem = ({ onPress, video, isRelatedVideo = false }: YoutubeItemProp
           <CardContent className="h-50 ">
             <img
               src={video.thumbnails.maxres.url}
+              width={isMobile() ? 400 : isRelatedVideo ? 400 : 250}
               loading="eager"
-              width={480}
               alt="Video related"
               className=" transition-opacity duration-500 ease-in-out opacity-0 rounded-xl mr-2"
               onLoad={(e) => {

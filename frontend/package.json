@@ -16,7 +16,8 @@
     "@reduxjs/toolkit": "^2.2.6",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^14.3.1",
+    "@types/jest": "^29.5.12",
     "@types/react-lines-ellipsis": "^0.15.6",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.2",
@@ -40,6 +41,7 @@
     "redux-thunk": "^3.1.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
+    "ts-jest": "^29.2.2",
     "tw-elements": "^2.0.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-imagemin": "^0.6.1"

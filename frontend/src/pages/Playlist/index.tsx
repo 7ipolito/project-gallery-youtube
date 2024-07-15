@@ -30,7 +30,7 @@ function Playlist() {
       {!isLoading ? (
         <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
           <div className="w-full flex items-center justify-center">
-            <PlayerYoutube video={videoSelected}>
+            <PlayerYoutube video={videoSelected.payload}>
               {videosRelated
                 ?.filter((v: Video) => v.videoId !== videoSelected?.videoId)
                 .map((v: Video) => (

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import { Video } from '../../interfaces/Video';
 import { isMobile } from '@/utils/utils';
@@ -18,6 +18,10 @@ function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
       autoplay: 1,
     },
   };
+
+  useEffect(() => {
+    console.log(video?.payload?.videoId);
+  }, [video]);
 
   return (
     <div className="items-center justify-center ">

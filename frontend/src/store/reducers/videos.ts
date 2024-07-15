@@ -27,7 +27,6 @@ const videosSlice = createSlice({
       state.videoRelatedState = payload;
     },
     setVideoSelected: (state, { payload }) => {
-      console.log(payload);
       state.videoSelectedState = { payload };
     },
   },

@@ -19,10 +19,6 @@ function PlayerYoutube({ video, children }: PlayerYoutubeProps) {
     },
   };
 
-  useEffect(() => {
-    console.log(video?.payload?.videoId);
-  }, [video]);
-
   return (
     <div className="items-center justify-center ">
       <YouTube videoId={video?.videoId} opts={opts} />

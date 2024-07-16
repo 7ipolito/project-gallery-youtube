@@ -9,10 +9,6 @@ export function isMobile() {
   return window.innerWidth < 720;
 }
 
-export async function resolvePromise<T>(promise: Promise<T>): Promise<T> {
-  return await promise;
-}
-
 export const toastConfig = {
   duration: 4000,
   position: 'top-center',

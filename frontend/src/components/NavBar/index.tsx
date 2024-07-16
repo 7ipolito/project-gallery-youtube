@@ -1,23 +1,15 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Label } from '@/components/ui/label';
-import { api } from '@/api/axios';
-import { putVideosSearched } from '@/store/reducers/videos';
-import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store';
 import { getInitialVideos, getVideos } from '@/store/actions/videos';
 import { Input } from '../ui/input';
 
-// import { Container } from './styles';
-// interface NavBarProps {
-//   children: ReactNode;
-// }
-
 const NavBar = () => {
   const navigate = useNavigate();
   const [initialized, setInitialized] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {

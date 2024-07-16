@@ -2,7 +2,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../api/axios';
 import { putVideosSearched, setVideoSelected, setVideosRelated } from '../reducers/videos';
-import { Video } from '@/interfaces/Video';
 
 export const getInitialVideos = createAsyncThunk('videos/getInitialVideos', async () => {
   try {
@@ -17,10 +16,10 @@ export const getInitialVideos = createAsyncThunk('videos/getInitialVideos', asyn
 
 export const getVideosByURLPlaylistId = createAsyncThunk(
   'videos/getVideosURL',
-  async ({ location }: any, { dispatch, getState }: any) => {
+  async ({ location }: any, { _, getState }: any) => {
     try {
       // eslint-disable-next-line eqeqeq
-      if (!getState().videoSelected?.videoId) {
+      if (!getState().videos.videoSelectedState?.videoId) {
         const params = new URLSearchParams(location.search);
         const playlistId = params.get('playlistId');
         const response = await api.post('/videos/findbyPlaylistId', { playlistId: playlistId });
@@ -30,8 +29,6 @@ export const getVideosByURLPlaylistId = createAsyncThunk(
       }
     } catch (error) {
       throw new Error();
-
-      console.log(error);
     }
   },
 );
@@ -45,6 +42,7 @@ export const getVideos = createAsyncThunk(
         if (response.data[0].videoId) {
           navigate(`/watch?playlistId=${searchValue}`);
           dispatch(setVideosRelated(response.data));
+          dispatch(setVideoSelected(response.data[0]));
         } else {
           throw new Error('No videos found');
         }

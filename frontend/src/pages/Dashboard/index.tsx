@@ -1,24 +1,23 @@
-import { lazy, Suspense, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { api } from '../../api/axios';
 import { Video } from '../../interfaces/Video';
 import { useNavigate } from 'react-router';
-import { resolvePromise } from '@/utils/utils';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getInitialVideos } from '@/store/actions/videos';
 import { setVideoSelected, setVideosRelated } from '@/store/reducers/videos';
 import Loading from '@/components/Loading';
 import YoutubeItemList from '@/components/YoutubeItemList';
+import { AppDispatch } from '@/store';
 
 function Dashboard() {
   const navigate = useNavigate();
   const videos = useSelector((state: any) => state.videos.videoState);
   const isLoading = useSelector((state: any) => state.videos.isLoadingState);
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
-    console.log(isLoading);
     dispatch(getInitialVideos());
   }, []);
 

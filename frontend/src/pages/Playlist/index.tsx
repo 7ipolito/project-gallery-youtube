@@ -9,6 +9,7 @@ import Loading from '@/components/Loading';
 import PlayerYoutube from '@/components/PlayerYoutube';
 import YoutubeItem from '@/components/YoutubeItem';
 import { setVideoSelected } from '@/store/reducers/videos';
+import { AppDispatch } from '@/store';
 
 function Playlist() {
   const location = useLocation();
@@ -16,12 +17,13 @@ function Playlist() {
   const videosRelated = useSelector((state: any) => state.videos.videoRelatedState);
   const isLoading = useSelector((state: any) => state.videos.isLoadingState);
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     const data = {
       location: location,
     };
+
     dispatch(getVideosByURLPlaylistId(data));
   }, []);
 
@@ -30,7 +32,7 @@ function Playlist() {
       {!isLoading ? (
         <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
           <div className="w-full flex items-center justify-center">
-            <PlayerYoutube video={videoSelected.payload}>
+            <PlayerYoutube video={videoSelected}>
               {videosRelated
                 ?.filter((v: Video) => v.videoId !== videoSelected?.videoId)
                 .map((v: Video) => (

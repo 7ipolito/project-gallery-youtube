@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const videoState: Video[] = [];
 const videoRelatedState: any = [];
-const videoSelectedState = {};
+const videoSelectedState: any = {};
 const isLoadingState = true;
 
 const videosSlice = createSlice({
@@ -27,7 +27,7 @@ const videosSlice = createSlice({
       state.videoRelatedState = payload;
     },
     setVideoSelected: (state, { payload }) => {
-      state.videoSelectedState = { payload };
+      state.videoSelectedState = payload;
     },
   },
   extraReducers: (builder) => {
@@ -54,7 +54,6 @@ const videosSlice = createSlice({
         state.isLoadingState = false;
       })
       .addCase(getVideos.fulfilled, (state, { payload }) => {
-        state.videoRelatedState = payload;
         state.isLoadingState = false;
       })
       //GetVideosByURLPlaylistId
@@ -66,8 +65,11 @@ const videosSlice = createSlice({
         toast.error('Failed to fetch videos');
       })
       .addCase(getVideosByURLPlaylistId.fulfilled, (state, { payload }) => {
-        state.videoRelatedState = payload;
-        state.videoSelectedState = payload[0];
+        if (!state.videoSelectedState?.videoId) {
+          state.videoRelatedState = payload;
+          state.videoSelectedState = payload[0];
+        }
+
         state.isLoadingState = false;
       });
   },

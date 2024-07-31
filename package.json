@@ -11,7 +11,7 @@
     "install-frontend": "cd frontend && pnpm install",
     "install-backend": "cd backend && pnpm install",
     "prisma-generate": "cd backend && npx run prisma generate",
-    "install": "concurrently \"pnpm run install-frontend\" \"pnpm run install-backend\" \"npx prisma generate\"",
+    "install": "concurrently \"pnpm run install-frontend\" \"pnpm run install-backend\" \"cd backend && npx prisma generate\"",
     "start": "concurrently \"pnpm run start-frontend\" \"pnpm run start-backend\""
   }
 }

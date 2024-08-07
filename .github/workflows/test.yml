@@ -1,0 +1,11 @@
+name: Test Workflow
+
+on:
+  workflow_dispatch: # Permite disparar o workflow manualmente
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello
+        run: echo "Hello, world!"

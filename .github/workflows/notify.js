@@ -58,7 +58,9 @@ async function sendSlackMessage() {
 
     
     const result = await client.chat.postMessage({
-      message
+      channel:message.channel,
+      blocks:message.blocks,
+      token: SLACK_API_TOKEN
     });
 
     console.log(result);

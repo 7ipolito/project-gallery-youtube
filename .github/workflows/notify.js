@@ -11,11 +11,8 @@ const context = github.context;
 async function sendSlackMessage() {
   try {
     const pullRequestData = {
-      id:context.payload.PULL_REQUEST_ID,
-      title:context.payload.PULL_REQUEST_TITLE,
-      url:context.payload.PULL_REQUEST_URL,
-      author:context.payload.PULL_REQUEST_AUTHOR,
-      state:context.payload.PULL_REQUEST_STATE,
+      title: context.payload.pull_request.title,
+      author:context.payload.pull_request.user.login,
       repoName: context.repo.repo,
       branchName:context.payload.pull_request.head.ref,
       pullRequestUrl: context.payload.pull_request.html_url
@@ -38,7 +35,7 @@ async function sendSlackMessage() {
           block_id: 'pr-details',
           text: {
             type: 'mrkdwn',
-            text: `*Repository:* ${pullRequestData.repoName}\n*Title*: ${pullRequestData.title}\n*Branch:* ${pullRequestData.branchName}\n*Author:* ${pullRequestData.author}\n*Pull Request URL:* ${pullRequestData.pullRequestUrl}`
+            text: `*Title:* ${pullRequestData.title}\n*Repository*: ${pullRequestData.repoName}\n*Branch:* ${pullRequestData.branchName}\n*Author:* ${pullRequestData.author}\n*Pull Request URL:* ${pullRequestData.pullRequestUrl}`
           }
         },
         {

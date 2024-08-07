@@ -6,8 +6,6 @@ on:
     types:
       - opened
       - closed
-      - approved
-      - rejected
 
 jobs:
   notify-slack:
@@ -26,4 +24,4 @@ jobs:
         echo "Sending Slack notification..."
         node notify.js
       env: 
-        SLACK_API_TOKEN : ${{ secrets.SLACK_API_TOKEN }}
+        SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}

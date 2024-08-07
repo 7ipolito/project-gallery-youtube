@@ -9,7 +9,7 @@ jobs:
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."
-          npm run install-workflows
+          npm install @slack/web-api
       - name: Send Slack notification
         env:
           SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}

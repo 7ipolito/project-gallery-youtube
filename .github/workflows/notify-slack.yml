@@ -1,11 +1,10 @@
 name: Notify Slack Channel on Pull Request Updates
-on: [pull_request]
+on: [push]
 jobs:
- Setup-notification:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."

@@ -1,0 +1,29 @@
+name: Notify Slack Channel on Pull Request Updates
+
+on:
+  workflow_dispatch: # Permite disparar o workflow manualmente
+  pull_request:
+    types:
+      - opened
+      - closed
+      - approved
+      - rejected
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        echo "Installing dependencies..."
+        npm install
+
+    - name: Send Slack notification
+      run: |
+        echo "Sending Slack notification..."
+        node notify.js
+      env: 
+        SLACK_API_TOKEN : ${{ secrets.SLACK_API_TOKEN }}

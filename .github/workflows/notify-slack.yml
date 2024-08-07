@@ -6,10 +6,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Install dependencies
-        run: |
-          echo "Installing dependencies..."
-          npm install
       - name: Send Slack notification
         env:
           SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}

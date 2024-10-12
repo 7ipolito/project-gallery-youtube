@@ -46,7 +46,7 @@ const YoutubeItem = ({ onPress, video, isRelatedVideo = false }: YoutubeItemProp
         </>
       ) : (
         <Card
-          className={`w-full cursor-pointer hover:bg-slate-100 rounded-2xl mb-4`}
+          className={`w-full cursor-pointer hover:bg-slate-100  dark:bg-slate-800 rounded-2xl mb-4`}
           style={isRelatedVideo ? { height: 384 } : { height: isMobile() ? 370 : 320 }}
           onClick={() => onPress(video)}
         >

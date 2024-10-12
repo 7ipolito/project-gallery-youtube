@@ -42,7 +42,7 @@ function Dashboard() {
   );
 
   return (
-    <div className="flex flex-1 w-full h-[100vh]">
+    <div className="bg-white dark:bg-slate-800 flex flex-1 w-full h-[100vh]">
       {!isLoading ? (
         <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
           <div className="w-full flex items-center justify-center">

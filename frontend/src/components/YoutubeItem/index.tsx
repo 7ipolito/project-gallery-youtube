@@ -40,13 +40,13 @@ const YoutubeItem = ({ onPress, video, isRelatedVideo = false }: YoutubeItemProp
       {!imageLoaded ? (
         <>
           <Skeleton
-            className={`w-full rounded-2xl animate-pulse `}
+            className={`w-full rounded-2xl animate-pulse dark:bg-slate-900`}
             style={isRelatedVideo ? { height: 384 } : { height: 320 }}
           />
         </>
       ) : (
         <Card
-          className={`w-full cursor-pointer hover:bg-slate-100  dark:bg-slate-800 rounded-2xl mb-4`}
+          className={`w-full group cursor-pointer hover:bg-slate-100 dark:hover:bg-white dark:bg-slate-800 rounded-2xl mb-4`}
           style={isRelatedVideo ? { height: 384 } : { height: isMobile() ? 370 : 320 }}
           onClick={() => onPress(video)}
         >
@@ -58,7 +58,7 @@ const YoutubeItem = ({ onPress, video, isRelatedVideo = false }: YoutubeItemProp
               trimRight
               basedOn="letters"
               component="h3"
-              className="text-2xl font-semibold leading-none tracking-tight"
+              className="text-2xl text-dark dark:text-white group-hover:text-black font-semibold leading-none tracking-tight"
             />
           </CardHeader>
           <CardContent className="h-50 ">

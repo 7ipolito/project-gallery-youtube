@@ -28,9 +28,9 @@ function Playlist() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-slate-800 flex flex-1 w-full h-[100vh]">
-      {!isLoading ? (
-        <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
+    <div className="bg-white dark:bg-slate-800 flex flex-1 w-full">
+      <div className="min-h-screen flex flex-col m-4 max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
+        {!isLoading ? (
           <div className="w-full flex items-center justify-center">
             <PlayerYoutube video={videoSelected}>
               {videosRelated
@@ -45,10 +45,10 @@ function Playlist() {
                 ))}
             </PlayerYoutube>
           </div>
-        </div>
-      ) : (
-        <Loading />
-      )}
+        ) : (
+          <Loading />
+        )}
+      </div>
     </div>
   );
 }

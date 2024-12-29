@@ -60,16 +60,16 @@
 }
 
 @font-face {
-  font-family: 'Roboto-Medium';
-  src: url('../src/assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-family: 'Kanit-Medium';
+  src: url('../src/assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
   /* Certifique-se de ajustar o caminho para onde você colocou sua fonte */
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto-Bold';
-  src: url('../src/assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  font-family: 'Kanit-Bold';
+  src: url('../src/assets/fonts/Kanit/Kanit-Bold.ttf') format('truetype');
   /* Certifique-se de ajustar o caminho para onde você colocou sua fonte */
   font-weight: normal;
   font-style: normal;
@@ -77,5 +77,5 @@
 
 /* Aplicar a fonte personalizada */
 body {
-  font-family: 'Roboto-Medium', sans-serif;
+  font-family: 'Kanit-Medium', sans-serif;
 }

@@ -35,4 +35,7 @@ model Video {
   updatedAt   DateTime @updatedAt
   playlistId  String
   playlist    Playlist @relation(fields: [playlistId], references: [playlistId])
+  view        Int
+  like        Int
+  dislike     Int
 }
